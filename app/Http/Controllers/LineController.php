@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Storage;
 use LINE\LINEBot\MessageBuilder\Flex\ComponentBuilder;
 use LINE\LINEBot\MessageBuilder\FlexMessageBuilder;
 use LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
+use App\Models\User;
+use App\Models\Site_config;
 
 class LineController extends Controller
 {
@@ -36,51 +38,29 @@ class LineController extends Controller
 
     public function test()
     {
-        $co = new \LINE\LINEBot\MessageBuilder\RawMessageBuilder(
-            [
-                'type' => 'flex',
-                'altText' => 'alt test',
-                'contents' => [
-                    'type' => 'bubble',
-                    'body' => [
-                        'type' => 'box',
-                        'layout' => 'vertical',
-                        'contents' => [
-                            [
-                                'type' => 'text',
-                                'text' => 'Hello,'
-                            ],
-                            [
-                                'type' => 'text',
-                                'text' => 'World!'
-                            ]
-                        ]
-                    ]
-                ],
-                'quickReply' => [
-                    'items' => [
-                        [
-                            'type' => 'action',
-                            'action' => [
-                                'type' => 'message',
-                                'label' => 'reply1',
-                                'text' => 'Reply1'
-                            ]
-                        ],
-                        [
-                            'type' => 'action',
-                            'action' => [
-                                'type' => 'message',
-                                'label' => 'reply2',
-                                'text' => 'Reply2'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
-        );
+        echo "<img src='". asset('images/1.jpg') ."' alt=''\>";
+        exit;
+        $event = [
+            'type' => 'message',
+            'source' => [
+                'userId' => 'U16529820b6dd5a52ebd2f8e381759a221'
+            ],
+            'message' => [
+                'type' => 'text',
+                'text' => '會員專區'
+            ],
+            'timestamp' => time(),
+        ];
 
-        dd($co);
+        $message = $this->text_handler($event);
+        if ($message)
+        {
+            dd($message);
+        }
+        else
+        {
+            dd('no data');
+        }
     }
     
 	public function index(Request $request)
@@ -179,8 +159,23 @@ class LineController extends Controller
                 // 課程介紹回覆
                 return $replyMessage->lessonsMessage();
             case self::MEMBER:
+                $user = User::where('user_id', $event['source']['userId'])->first();
+                $message = null;
+                if (!$user)
+                {
+                    // 有登錄過
+                }
+                else
+                {
+                    // 沒有登錄
+                    // 取得引導用戶註冊的文字訊息 from DB
+                    $config = Site_config::where('key', config('site_config.FLEX_MEMBER_WELCOME_JOIN_MEMBER_MSG'))->first();
+                    $message = $config->value;
+                }
+                $this->log->log('log', sprintf('In : %s', $message));
+
                 // 會員專區回覆
-                return $replyMessage->memberMessage();
+                return $replyMessage->memberMessage($message);
             case self::CONTACT:
                 //聯絡我們回覆
                 return $replyMessage->contactMessage();
