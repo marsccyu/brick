@@ -25,6 +25,7 @@ Route::group([
     $router->get('lessons/{id}/edit', 'LessonsController@edit');
     $router->put('lessons/{id}', 'LessonsController@update');
     $router->delete('lessons/{id}', 'LessonsController@destroy');
+    $router->get('api/lessons', 'LessonsController@apiIndex');
 
     $router->get('lesson_cards', 'LessonCardsController@index');
     $router->get('lesson_cards/{id}/edit', 'LessonCardsController@edit');

@@ -9,6 +9,8 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use Encore\Admin\Layout\Content;
+use Illuminate\Http\Request;
+
 
 class LessonsController extends AdminController
 {
@@ -106,5 +108,12 @@ class LessonsController extends AdminController
         });
 
         return $form;
+    }
+
+    public function apiIndex(Request $request)
+    {
+        // 用户输入的值通过 q 参数获取
+        $search = $request->input('q');
+        return Lesson::where('course_id', $search)->get()->pluck('title', 'id');
     }
 }

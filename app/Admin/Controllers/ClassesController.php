@@ -84,26 +84,8 @@ class ClassesController extends AdminController
         }
         else
         {
-            $form->select('course_id', '對應期別名稱')->options(Course::all()->pluck('name', 'id'))->required()
-            ->when(1, function (Form $form)
-            {
-                $form->select('lesson_id', '課程名稱')->options(Lesson::where('course_id', 1)->get()->pluck('title', 'id'))->required();
-            })->when(2, function (Form $form)
-            {
-                $form->select('lesson_id', '課程名稱')->options(Lesson::where('course_id', 2)->get()->pluck('title', 'id'))->required();
-            })->when(3, function (Form $form)
-            {
-                $form->select('lesson_id', '課程名稱')->options(Lesson::where('course_id', 3)->get()->pluck('title', 'id'))->required();
-            })->when(4, function (Form $form)
-            {
-                $form->select('lesson_id', '課程名稱')->options(Lesson::where('course_id', 4)->get()->pluck('title', 'id'))->required();
-            })->when(5, function (Form $form)
-            {
-                $form->select('lesson_id', '課程名稱')->options(Lesson::where('course_id', 5)->get()->pluck('title', 'id'))->required();
-            })->when(6, function (Form $form)
-            {
-                $form->select('lesson_id', '課程名稱')->options(Lesson::where('course_id', 6)->get()->pluck('title', 'id'))->required();
-            });
+            $form->select('course_id', '對應期別名稱')->options(Course::all()->pluck('name', 'id'))->load('lesson_id', '/admin/api/lessons')->required();
+            $form->select('lesson_id', '課程名稱')->required();
         }
 
         $form->text('title', __('班級名稱'))->required();
