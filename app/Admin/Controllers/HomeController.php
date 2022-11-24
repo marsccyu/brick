@@ -13,22 +13,35 @@ class HomeController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->title('Dashboard')
-            ->description('Description...')
-            ->row(Dashboard::title())
+            ->title('管理後台首頁')
+            ->description(' ')
+            ->row('')
             ->row(function (Row $row) {
 
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::environment());
-                });
-
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::extensions());
-                });
-
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::dependencies());
-                });
+//                $row->column(4, function (Column $column) {
+//                    $column->append(Dashboard::environment());
+//                });
+//
+//                $row->column(4, function (Column $column) {
+//                    $column->append(Dashboard::extensions());
+//                });
+//
+//                $row->column(4, function (Column $column) {
+//                    $column->append(Dashboard::dependencies());
+//                });
             });
+    }
+
+    public function sma()
+    {
+        return;
+        $grid = new Grid(new CouponCode);
+
+        $grid->model()->orderBy('created_at', 'desc');
+        $grid->id('ID')->sortable();
+
+        $form->display('subtitle', __('子標題'))->with(function ($value) {
+            return $value . '123';
+        });
     }
 }

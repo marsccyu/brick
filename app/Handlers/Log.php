@@ -44,15 +44,15 @@ class Log
     }
 
     /**
-     * @param $user_id
+     * @param $userId
      * @param $event
      * @param $timestamp
      * @return mixed
      */
-    public function log_action($user_id, $event, $timestamp)
+    public function log_action($userId, $event, $timestamp)
     {
         $log = new Action_log();
-        $log->user_id = $user_id;
+        $log->useId = $userId;
         $log->event = $event;
         $log->api_timestamp = $timestamp;
         $log->save();

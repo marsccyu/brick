@@ -13,35 +13,42 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     use DefaultDatetimeFormat;
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+
     protected $fillable = [
+        'userId',
+        'password',
         'name',
         'email',
-        'password',
+        'type',
+        'telephone',
+        'age',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = [];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function point_task()
+    {
+        return Point_task::get();
+    }
+
+    public function point_history()
+    {
+        return $this->hasMany(Point_history::class);
+    }
+
+    public function point()
+    {
+        return $this->hasOne(Point::class);
+    }
+
+    public function signIn()
+    {
+        return $this->hasMany(SignIn::class);
+    }
 
     public function getAgeAttribute($value): string
     {

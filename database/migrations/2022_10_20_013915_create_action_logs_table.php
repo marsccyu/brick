@@ -15,7 +15,7 @@ class CreateActionLogsTable extends Migration
     {
         Schema::create('action_logs', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id')->index();
+            $table->string('useId')->index();
             $table->text('event');
             $table->string('api_timestamp');
             $table->string('reply_type')->nullable();

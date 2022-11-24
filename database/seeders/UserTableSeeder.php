@@ -2,25 +2,37 @@
 
 namespace Database\Seeders;
 
+use App\Models\Point_history;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use DB;
 
 class UserTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        $user = new User();
-        $user->user_id = 'U16529820b6dd5a52ebd2f8e381759a22';
-        $user->type = 'parents';
-        $user->name = 'Mars';
-        $user->email = 'bcawosxy@gmail.com';
-        $user->telephone = '0912345678';
-        $user->age = 20;
-        $user->save();
+        $default = [
+            [
+                'userId' => 'U16529820b6dd5a52ebd2f8e381759a22',
+                'password' => 'U16529820b6dd5a52ebd2f8e381759a22b',
+                'type' => 'parents',
+                'name' => 'Test',
+                'email' => 'test@mail.com',
+                'telephone' => '0912345678',
+                'age' => 20,
+            ],
+            [
+                'userId' => 'Ub0fc501c96142753beadf6bd74a3d8d8',
+                'password' => 'Ub0fc501c96142753beadf6bd74a3d8d8',
+                'type' => 'parents',
+                'name' => '邱泓宇',
+                'email' => 'silence5842@gmail.com',
+                'telephone' => '0953178798',
+                'age' => 10,
+            ],
+        ];
+
+        DB::table('users')->insert($default);
+
     }
 }

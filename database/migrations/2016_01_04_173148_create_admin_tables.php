@@ -21,6 +21,7 @@ class CreateAdminTables extends Migration
      */
     public function up()
     {
+        return;
         Schema::create(config('admin.database.users_table'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('username', 190)->unique();
@@ -106,6 +107,7 @@ class CreateAdminTables extends Migration
      */
     public function down()
     {
+        return;
         Schema::dropIfExists(config('admin.database.users_table'));
         Schema::dropIfExists(config('admin.database.roles_table'));
         Schema::dropIfExists(config('admin.database.permissions_table'));

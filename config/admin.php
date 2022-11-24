@@ -2,11 +2,10 @@
 
 return [
 
-    'name' => 'Admin',
+    'name' => '秘密積地 - 管理系統',
+    'logo' => '<b>秘密積地</b> 管理後台',
 
-    'logo' => '<b>秘密積地</b> admin',
-
-    'logo-mini' => '<b>La</b>',
+    'logo-mini' => '<b>秘</b>',
 
     'bootstrap' => app_path('Admin/bootstrap.php'),
 
@@ -66,7 +65,7 @@ return [
 
         // Image and file upload path under the disk above.
         'directory' => [
-            'image' => 'images',
+            'image' => 'imagessss',
             'file'  => 'files',
         ],
     ],
