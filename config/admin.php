@@ -2,7 +2,8 @@
 
 return [
 
-    'name' => '秘密積地 - 管理系統',
+    'name' => 'Admin',
+
     'logo' => '<b>秘密積地</b> 管理後台',
 
     'logo-mini' => '<b>秘</b>',
@@ -65,7 +66,7 @@ return [
 
         // Image and file upload path under the disk above.
         'directory' => [
-            'image' => 'imagessss',
+            'image' => 'images',
             'file'  => 'files',
         ],
     ],
