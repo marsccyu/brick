@@ -17,9 +17,9 @@ class CreatePointHistoriesTable extends Migration
             $table->id();
             $table->integer('point_task_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
-            $table->decimal('before')->unsigned();
-            $table->decimal('change');
-            $table->decimal('after')->unsigned();
+            $table->decimal('before', 8, 0)->unsigned();
+            $table->decimal('change', 8, 0);
+            $table->decimal('after', 8, 0)->unsigned();
             $table->string('description');
             $table->string('comment')->nullable();
             $table->timestamps();

@@ -5,7 +5,7 @@
 
         <form method="POST" class="appointment-form" id="appointment-form" action="{{ route('register') }}">
             @csrf
-            <h2> {{ $title }} - 綁定您的 Line 帳號 </h2>
+            <h2> {{ ($title ?? "秘密積地") }} - 綁定您的 Line 帳號 </h2>
             @if($registered)
                 <div class="alert alert-success">
                 您的 Line 帳號已完成綁定。

@@ -54,21 +54,9 @@ class LineController extends Controller
     {
         $userId = 'U16529820b6dd5a52ebd2f8e381759a22';
     #    $user = User::where('userId', $userId)->get()->first()->toArray();
+        $n = Classes::find(1)->signIn()->count();
+        dd($n);
 
-	$rows = [];
-		$signIns = SignIn::where('user_id', 1)->paginate(1);
-            if ($signIns)
-	    {
-                foreach ($signIns as $signIn)
-		{
-                    $rows[] = [
-                        'id' => $signIn->id,
-                        'lesson_title' => '1',
-                        'classes_title' => '2',
-                        'created_at' => $signIn->created_at,
-#                    ];
-                }
-	    }
     }
     
 	public function index(Request $request)

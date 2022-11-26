@@ -41,7 +41,10 @@ class RegisterController extends Controller
         $title = Site_config::where('key', config('site_config.TITLE'))->first()->value('value');
 
         // 測試時才打開
-        // return view('auth.register', ['uid' => $request->input('uid')]);
+//         return view('auth.register', [
+//             'uid' => 1,
+//             'registered' => FALSE
+//         ]);
 
         // 取得 uid 是否已登錄
         if ($user = User::where('userId', $request->input('uid'))->first())

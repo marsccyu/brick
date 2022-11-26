@@ -26,7 +26,7 @@ class PointTaskSeeder extends Seeder
                 'point' => '5'
             ],
             [
-                'name' => 'exchange-1',
+                'name' => 'exchange-5',
                 'description' => '兌換一項物品',
                 'point' => '-5'
             ],

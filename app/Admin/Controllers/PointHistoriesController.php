@@ -14,6 +14,7 @@ use Encore\Admin\Layout\Content;
 class PointHistoriesController extends AdminController
 {
     protected $title = '會員積分管理';
+    protected $table = "point_histories";
 
     public function index(Content $content)
     {

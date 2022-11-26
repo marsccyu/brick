@@ -11,6 +11,8 @@ class Point_history extends Model
     use HasFactory;
     use DefaultDatetimeFormat;
 
+    protected $table = 'point_histories';
+
     protected $fillable = [
         'user_id',
         'point_task_id',

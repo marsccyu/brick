@@ -60,6 +60,9 @@ class ClassesController extends AdminController
         $grid->column('title', __('名稱'));
         $grid->column('start', __('簽到開始時間'));
         $grid->column('end', __('簽到結束時間'));
+        $grid->column('簽到人數')->display(function () {
+            return $this->signIn()->count();
+        });
 //        $grid->disableCreateButton();
         $grid->disablePagination();
         $grid->disableExport();

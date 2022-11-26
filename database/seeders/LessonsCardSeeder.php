@@ -19,7 +19,7 @@ class LessonsCardSeeder extends Seeder
                 'title' => '初階課程',
                 'subtitle' => '科學結構 / 邏輯編程',
                 'display' => 1,
-                'image' => 'images/lessons/level-1.jpg',
+                'image' => 'images/lessons/f-level-1.png',
                 'content' => '*初階課程介紹文字*',
                 'created_at' => date('Y-m-d H:i:s')
             ],
@@ -27,7 +27,7 @@ class LessonsCardSeeder extends Seeder
                 'title' => '中階課程',
                 'subtitle' => '動力機械 / 單體機關 ',
                 'display' => 1,
-                'image' => 'images/lessons/level-2.jpg',
+                'image' => 'images/lessons/f-level-2.png',
                 'content' => '*中階課程介紹文字*',
                 'created_at' => date('Y-m-d H:i:s')
             ],
@@ -35,7 +35,7 @@ class LessonsCardSeeder extends Seeder
                 'title' => '進階課程',
                 'subtitle' => '機關串聯 / 程式控制',
                 'display' => 1,
-                'image' => 'images/lessons/level-3.jpg',
+                'image' => 'images/lessons/f-level-3.png',
                 'content' => '*高階課程介紹文字*',
                 'created_at' => date('Y-m-d H:i:s')
             ],
