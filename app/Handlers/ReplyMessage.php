@@ -96,7 +96,7 @@ class ReplyMessage
                     "url" => asset('storage/' . $lesson['image']),
                     "size" => "full",
                     "aspectMode" => "cover",
-                    "aspectRatio" => "300:180"
+                    "aspectRatio" => "220:200"
                 ],
                 "body" => [
                     "type" => "box",

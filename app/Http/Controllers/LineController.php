@@ -4,30 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Handlers\Log;
 use App\Handlers\ReplyMessage;
-use App\Models\Action_log;
 use App\Models\ContactUs;
-use App\Models\Error_log;
-use App\Models\All_log;
-use App\Models\Lesson;
 use App\Models\LessonCard;
-use App\Models\Point;
 use App\Models\Point_task;
-use App\Models\Point_history;
 use App\Models\SignIn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use LINE\LINEBot\MessageBuilder\Flex\ComponentBuilder;
-use LINE\LINEBot\MessageBuilder\FlexMessageBuilder;
-use LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
 use App\Models\User;
 use App\Models\Site_config;
 use App\Models\About_us;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\Classes;
-use function MongoDB\BSON\fromJSON;
 use DB;
-use App\Models\Course;
 
 class LineController extends Controller
 {
@@ -50,13 +39,8 @@ class LineController extends Controller
         $this->log = new Log();
     }
 
-    public function test(Request $request)
+    public function server_info(Request $request)
     {
-        $userId = 'U16529820b6dd5a52ebd2f8e381759a22';
-    #    $user = User::where('userId', $userId)->get()->first()->toArray();
-        $n = Classes::find(1)->signIn()->count();
-        dd($n);
-
     }
     
 	public function index(Request $request)

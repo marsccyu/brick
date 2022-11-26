@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Line API Webhook
 Route::post('/line', "LineController@index")->name('line.index');
-Route::get('/info', "LineController@test")->name('line.test');
+Route::get('/server_info', "LineController@server_info")->name('line.server_info');
 
 // 用户身份验证相关的路由
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

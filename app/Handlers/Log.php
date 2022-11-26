@@ -62,7 +62,8 @@ class Log
 
     /**
      * @param $log_id
-     * @param $reply
+     * @param $replyType
+     * @param $replyContent
      * @return void
      */
     public function log_action_update($log_id, $replyType, $replyContent)
@@ -74,7 +75,8 @@ class Log
     }
     public function log($type, $msg)
     {
-        $fp = fopen(storage_path('app/line.txt'), 'a+');
+        $log_file = sprintf("Line-%s.txt", date('Y-m-d'));
+        $fp = fopen(storage_path('logs/'.$log_file), 'a+');
         fwrite($fp, json_encode($msg, JSON_UNESCAPED_UNICODE));
         fwrite($fp,PHP_EOL);
         fclose($fp);
