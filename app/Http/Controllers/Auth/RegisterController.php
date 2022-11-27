@@ -92,7 +92,7 @@ class RegisterController extends Controller
 
         return $request->wantsJson()
             ? new JsonResponse([], 201)
-            : redirect('https://line.me/R/oaMessage/@053clhcl/?會員專區');
+            : redirect(sprintf("https://line.me/R/oaMessage/%s/?會員專區", env('LINE_ACCOUNT_ID')));
     }
 
     /**
