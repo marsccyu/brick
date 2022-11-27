@@ -187,7 +187,6 @@ class LineController extends Controller
                     $config = Site_config::where('key', config('site_config.FLEX_MEMBER_WELCOME_JOIN_MEMBER_MSG'))->first();
                     $message = $config->value;
 
-                    // 產生 token
                     $params = [
                         'uid' => $uid,
                         'token' => $token,

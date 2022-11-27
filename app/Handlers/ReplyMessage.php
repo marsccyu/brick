@@ -18,6 +18,8 @@ class ReplyMessage
     const XL = "xl";
     const XXL = "xxl";
 
+    const NAME_COLOR = "#007bff";
+
     private $userId;
 
     public function __construct($event)
@@ -573,7 +575,7 @@ class ReplyMessage
                                 "text" => $params['user']['name'],
                                 "weight" => "bold",
                                 "size" => self::XL,
-                                "color" => "#ffffff",
+                                "color" => self::NAME_COLOR,
                                 "margin" => "md"
                             ],
                             [
@@ -752,7 +754,8 @@ class ReplyMessage
                                     "text" => $params['user']['name'],
                                     "weight" => "bold",
                                     "size" => self::XL,
-                                    "margin" => "md"
+                                    "margin" => "md",
+                                    "color" => self::NAME_COLOR
                                 ],
                                 [
                                     "type" => "separator",
@@ -841,7 +844,8 @@ class ReplyMessage
                                 "text" => $params['name'],
                                 "size" => self::XL,
                                 "margin" => "md",
-                                "weight" => "bold"
+                                "weight" => "bold",
+                                "color" => self::NAME_COLOR
                             ],
                             [
                                 "type" => "separator",
@@ -930,7 +934,7 @@ class ReplyMessage
                                     "contents" => [
                                         [
                                             "type" => "text",
-                                            "text" => "學習歷程 >>",
+                                            "text" => ($params['sign_in_list']) ? "學習歷程 >>" : "沒有學習記錄",
                                             "size" => "md",
                                             "color" => "#ffffff",
                                         ]
