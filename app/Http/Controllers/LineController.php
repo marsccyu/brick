@@ -41,9 +41,18 @@ class LineController extends Controller
 
     public function server_info(Request $request)
     {
+
+      try {
+         $dbconnect = DB::connection()->getPDO();
+         $dbname = DB::connection()->getDatabaseName();
+         echo "Connected successfully to the database. Database name is :".$dbname;
+      } catch(Exception $e) {
+         echo "Error in connecting to the database";
+      }
+
     }
     
-	public function index(Request $request)
+    public function index(Request $request)
 	{
         $signature = null;
 
